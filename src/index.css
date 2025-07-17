@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bgcolor: var(--bgcolor);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-accenttext: var(--accenttext);
+
+  --font-arial: Arial, Helvetica, sans-serif;
+
+  @keyframes fadeIn {
+    from {
+      filter: brightness(0%);
+    }
+    to {
+      filter: brightness(100%);
+    }
+  }
+
+  --animate-fadeIn: fadeIn 0.5s linear forwards;
+
+  @keyframes moveTopToCenter {
+    from {
+      top: -300px;
+    }
+    to {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  --animate-moveTopToCenter: moveTopToCenter 0.75s linear forwards;
+}
+
+:root {
+  --bgcolor: rgb(250, 243, 224);
+  --primary: rgb(34, 139, 34);
+  --secondary: rgb(51, 51, 51);
+  --accent: rgb(255, 193, 7);
+  --accenttext: rgb(51, 51, 51);
+}
+
+.dark {
+  --bgcolor: rgb(30, 43, 46);
+  --primary: rgb(34, 139, 34);
+  --secondary: rgb(224, 224, 224);
+  --accent: rgb(40, 150, 136);
+  --accenttext: rgb(240, 240, 240);
+}
+
+html {
+  @apply bg-bgcolor text-secondary animate-fadeIn font-arial;
+}
+
+footer {
+  @apply fixed bottom-0 left-1.5;
+}
+
+body {
+  @apply pb-[2%];
+}
+
+@media (max-width: 1000px) {
+  body {
+    @apply pb-[8%];
+  }
+}
+
+.toggleDarkLightBtn {
+  @apply fixed bottom-8 right-8 border-none hover:brightness-75 cursor-pointer bg-none;
+}
+
+.toggleDarkLightBtn img {
+  @apply w-8 h-8 rounded-full;
+}
+
+.navbarli {
+  @apply border-r-1 border-black text-center cursor-pointer hover:bg-black last:border-r-0 last:border-l-1 last:ml-auto;
+}
+
+.designTab {
+  @apply block pl-5 pr-5 pt-3.5 pb-3.5 min-w-[120px];
+}
+
+.headerStyle1 {
+  @apply text-center text-[50px] font-bold text-black bg-primary;
+}
+
+.labelStyle1 {
+  @apply block font-bold text-xl;
+}
+
+.formInputStyle1 {
+  @apply w-[200px] h-8 mb-5 border-1 border-black border-solid indent-1.5 rounded-md bg-white text-black text-[13px];
+}
+
+.textAreaStyle1 {
+  @apply w-[200px] h-20 mb-5 border-1 border-black border-solid indent-1.5 rounded-md bg-white text-black text-[13px];
+}
+
+.formButtonStyle1 {
+  @apply w-[200px] border-2 border-gray-200 border-solid mb-[1%] text-center bg-white text-black hover:brightness-75 cursor-pointer text-[15px];
+}
