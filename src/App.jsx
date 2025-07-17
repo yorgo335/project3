@@ -16,7 +16,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/contactus" element={<Contactus />} />
           <Route path="/about" element={<About />} />
-          <Route path="/product/:id" element={<Productinfo />} />
+          <Route path="/store/:id" element={<Productinfo />} />
         </Routes>
       </BrowserRouter>
       <DarkLightToggle />

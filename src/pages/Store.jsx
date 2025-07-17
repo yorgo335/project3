@@ -21,7 +21,7 @@ const Store = () => {
           >
             <button
               onClick={() => {
-                navigate(`/product/${product.id}`);
+                navigate(`/store/${product.id}`);
               }}
             >
               <img
