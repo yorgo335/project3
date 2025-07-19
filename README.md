@@ -19,6 +19,9 @@ I didn't use redux here as it has no use for me now since I can directly fetch f
 do note I kept redux because I can use it for things like a shopping cart for example
 but my apology I couldn't add said feature as I am finding it difficult to make time between my senior Univerisity Project and this project
 
+I also implemented the processing of the contact us form which will be saved in the server/contactus-submissions folder
+the file naming convention follows this "Username dd-mm-yyyy, hh-mm-ss AM/PM.txt"
+
 a final note, I had some issues with encoding for the database as despite using utf-8 everywhere from the pshell to pgAdmin 4, it still had issues for some reason with apostrophes, I eventually fixed it by just performing queries on pgAdmin4 rather than the pshell
 
 PS: I used "npm run dev" for front end the on a diff terminal "npm run devStart" for backend
