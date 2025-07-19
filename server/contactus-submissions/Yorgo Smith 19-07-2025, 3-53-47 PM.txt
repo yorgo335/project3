@@ -1,0 +1,6 @@
+Name: Yorgo Smith
+Email: yorgosmith39@gmail.com
+Phone: 78392056
+Comment: I made it so the file naming convention would use time stamp as well name passed down in case multiple user with same name or just same user but different submissions happens.
+
+PS: the email and phone numbers are just dummy data.
