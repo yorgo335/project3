@@ -15,7 +15,7 @@ do note I made it so backend listens to /api since it caused a LOT of issues whe
 in front end since for example refreshing /store if I used /store in backend, it would end up loading
 the /store of the backend which was on port 3000 instead of the front end on port 5173
 
-I didn't use redux here as it has no use for me now since I can directly fetch from database the needed data
+I didn't use redux here as it has no use for me now since I can directly fetch from database the needed data (products data)
 do note I kept redux because I can use it for things like a shopping cart for example
 but my apology I couldn't add said feature as I am finding it difficult to make time between my senior Univerisity Project and this project
 
