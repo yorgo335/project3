@@ -1,21 +1,47 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import backArrowImg from "../assets/backarrow.png";
-import { selectProducts } from "../productSlice";
 
 const Productinfo = () => {
   //first we are loading the id passed down when routing
   const { id } = useParams();
-  //second we load the productsList form the products slice
-  const products = useSelector(selectProducts);
-  //third we check if an item with the id specified exists, if yes then we can display its info else we show an error 404
-  const productInfo = products.find((product) => product.id.toString() === id);
+
+  //this will store the product's info
+  const [productInfo, setProductInfo] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  //fetch the product's info from database if it exists
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(`/api/store/${id}`);
+        const data = await res.json();
+        setProductInfo(data.data);
+      } catch (err) {
+        console.error("Failed to load product", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    fetchProduct();
+  }, [id]);
+
   //used to navigate
   const navigate = useNavigate();
   //these 2 states are used to track if a popup is visible or not
   const [isConfirmPopupVisible, setIsConfirmPopupVisible] = useState(false);
   const [isOrderPlaced, setIsOrderPlaced] = useState(false);
+
+  //loading screen while fetching
+  if (isLoading) {
+    return (
+      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+        <div className="w-10 h-10 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   //if no product exist with such id then it returns false so !false is true
   if (!productInfo) {
@@ -74,11 +100,14 @@ const Productinfo = () => {
             <br />
             <div className="ml-10 mr-2">
               <ul className="list-disc">
-                {productInfo.description.split("\n").map((line, index) => (
-                  <li key={index} className="max-w-[960px]">
-                    {line.trim()}
-                  </li>
-                ))}
+                {productInfo.description
+                  .replace(/\\n/g, "\n")
+                  .split("\n")
+                  .map((line, index) => (
+                    <li key={index} className="max-w-[960px]">
+                      {line.trim()}
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>

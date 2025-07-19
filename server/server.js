@@ -30,6 +30,20 @@ AppDataSource.initialize().then(()=>{
             });
         })
 
+        //the code below is heavily similar to the one I used to load all products above, the difference
+        //is that findOne({ where: { id: parseInt(req.params.id)}}) will allow me to get a single result compared to all products
+        //ofcourse if the product exists that is.
+        //also we parseInt since id was passed down as string so we need to match the data type thats we used parseInt
+
+        app.get("/api/store/:id", async (req, res) => {
+            const product = await productRepository.findOne({ where: { id: parseInt(req.params.id) } });
+
+            return res.json({ 
+                status: "OK", 
+                data: product 
+            });
+        });
+
     });
 }).catch(error => {
         console.log(error);
