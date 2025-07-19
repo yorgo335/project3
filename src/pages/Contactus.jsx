@@ -9,7 +9,7 @@ const Contactus = () => {
       <h1 className="headerStyle1">Contact Us!</h1>
       <div className="flex justify-center items-center mt-[5%]">
         <form
-          action="/contactus"
+          action="/api/contactus"
           method="post"
           className=" bg-accent text-accenttext rounded-4xl p-12"
         >
